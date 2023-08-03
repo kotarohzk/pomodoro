@@ -34,6 +34,37 @@
 		</div>
 	</div>
 	<div class="todo">
+		<div class="section-title">
+			<span>✅</span>
+			<div>To-do</div>
+		</div>
+		<div class="tasks">
+			<div id="task-lists" class="task-lists">
+				<div class="task">
+					<button class="check-btn">
+						<img class="checkbox" data-checked="false" src="assets/check-mark-circle-line-icon.svg" alt="svg image of check mark">
+					</button>
+					<div class="task-desc">Take the dogs out for a walk I like day6 songs they are so good</div>
+				</div>
+				<div class="task">
+					<button class="check-btn">
+						<img class="checkbox" data-checked="false" src="assets/check-mark-circle-line-icon.svg" alt="svg image of check mark">
+					</button>
+					<div class="task-desc">Get groceries</div>
+				</div>
+			</div>
+			<div id="task-input" class="task-input hidden">
+				<input id="input-value" type="text" placeholder="What are your goals today?">
+				<div class="btn-group">
+					<button id="cancel-btn" class="btn cancel-btn">Cancel</button>
+					<button id="save-btn" class="btn save-btn">Save</button>
+				</div>
+			</div>
+			<div id="input-area" class="input-area">
+				<img class="svg-plus" src="assets/plus-round-icon.svg" alt="SVG image of add icon">
+				<div class="task-btn">Add Task</div>
+			</div>
+		</div>
 	</div>
 	<script src="main.js"></script>
 </body>

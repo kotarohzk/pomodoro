@@ -1,5 +1,5 @@
-let workTime = .2 * 60;
-let shortBreak = .1 * 60;
+let workTime = 25 * 60;
+let shortBreak = 10 * 60;
 let currentTime = workTime;
 let work = true;
 let latestSecond = null;
@@ -9,6 +9,7 @@ const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
 const timer = document.getElementById("timer");
 const tab = document.getElementById("tab");
+const inputArea = document.getElementById("input-area");
 
 displayTimer();
 
@@ -82,7 +83,7 @@ function pauseTimer()
 
 function resetTimer(tabId)
 {
-	if (!intervalId)
+	if (intervalId)
 	{
 		pauseTimer();
 	}
@@ -114,6 +115,83 @@ tab.addEventListener("click", e => {
 				resetTimer(btn.id);
 			}
 		})
+	}
+})
+
+inputArea.addEventListener("click", () => {
+	document.getElementById("task-input").classList.remove("hidden");
+	inputArea.classList.add("hidden");
+})
+
+document.getElementById("cancel-btn").addEventListener("click", () => {
+	document.getElementById("task-input").classList.add("hidden");
+	document.getElementById("input-value").value = "";
+	inputArea.classList.remove("hidden");
+})
+
+// document.getElementById("checkbox").addEventListener("click", e => {
+// 	if (e.target.dataset.checked === "true")
+// 	{
+// 		e.target.src = "assets/check-mark-circle-line-icon.svg";
+// 		e.target.dataset.checked = "false";
+// 	}
+// 	else if (e.target.dataset.checked === "false")
+// 	{
+// 		e.target.src = "assets/check-mark-circle-icon.svg";
+// 		e.target.dataset.checked = "true";	
+// 	}
+// })
+
+{/* <div class="task">
+<button class="check-btn">
+	<img class="checkbox" data-checked="false" src="assets/check-mark-circle-line-icon.svg" alt="svg image of check mark">
+</button>
+<div class="task-decsc">Take the dogs out for a walk I like day6 songs they are so good</div>
+</div> */}
+
+function createToDoItem(task) {
+	const newDiv = document.createElement("div");
+	newDiv.classList.add("task");
+	const newBtn = document.createElement("button");
+	newBtn.classList.add("check-btn");
+	const newImg = document.createElement("img");
+	newImg.src = "assets/check-mark-circle-line-icon.svg";
+	newImg.classList.add("checkbox");
+	newImg.dataset.checked = "false";
+	const taskDiv = document.createElement("div");
+	const newTextNode = document.createTextNode(task);
+	taskDiv.classList.add("task-desc");
+
+	taskDiv.appendChild(newTextNode);
+	newBtn.appendChild(newImg);
+	newDiv.appendChild(newBtn);
+	newDiv.appendChild(taskDiv);
+
+	return (newDiv);
+}
+
+document.getElementById("task-lists").addEventListener("click", e => {
+	const classArray = Array.from(e.target.classList);
+	console.log(classArray);
+	if (classArray.includes("checkbox"))
+	{
+		if (e.target.dataset.checked === "true")
+		{
+			e.target.src = "assets/check-mark-circle-line-icon.svg";
+			e.target.dataset.checked = "false";
+		}
+		else if (e.target.dataset.checked === "false")
+		{
+			e.target.src = "assets/check-mark-circle-icon.svg";
+			e.target.dataset.checked = "true";	
+		}
+	}
+})
+
+document.getElementById("save-btn").addEventListener("click", () => {
+	if (document.getElementById("input-value").value)
+	{
+		document.getElementById("task-lists").appendChild(createToDoItem(document.getElementById("input-value").value));
 	}
 })
 
