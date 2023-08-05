@@ -207,11 +207,23 @@ body {
 	display: flex;
 	align-items: center;
 	margin-bottom: 15px;
-	/* background-color: #588157;
-	padding: 15px 20px;
+	/* justify-content: space-between; */
+	/* padding: 15px 20px;
 	border-radius: 10px; */
 }
 
 .check-btn, .task-desc {
 	margin: 0 5px;
 }
+
+.more-btn {
+	background: none;
+	border: none;
+	align-items: center;
+	cursor: pointer;
+	margin-left: auto;
+	/* justify-self: flex-end; */
+	/* align-self: flex-end */
+	/* display: none; */
+}
+
